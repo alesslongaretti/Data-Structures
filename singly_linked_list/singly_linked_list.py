@@ -58,8 +58,10 @@ class LinkedList:
                 self.head = None
                 self.tail = None
             else:
-                self.tail = self.tail.get_next_node()
+                ret_value = self.head.get_next_node().get_value()
+                self.tail = self.head
             return ret_value
+            
 
     def contains(self,value):
         cur_node = self.head
