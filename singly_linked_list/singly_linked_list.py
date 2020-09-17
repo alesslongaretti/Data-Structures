@@ -50,7 +50,16 @@ class LinkedList:
             return ret_value
     
     def remove_tail(self):
-        pass
+        if self.tail is None:
+            return None
+        else:
+            ret_value = self.tail.get_value()
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
+            else:
+                self.tail = self.tail.get_next_node()
+            return ret_value
 
     def contains(self,value):
         cur_node = self.head
