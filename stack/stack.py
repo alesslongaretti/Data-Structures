@@ -102,9 +102,6 @@ class LinkedList:
                 return True
         return False
 
-    def get_max(self):
-        pass
-
 
 class Stack:
     def __init__(self):
