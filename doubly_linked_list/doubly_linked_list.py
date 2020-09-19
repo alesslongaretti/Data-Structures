@@ -9,9 +9,9 @@ class ListNode:
         self.next = next_node
 
     def delete(self):
-        if self.prev:
-            self.next.prev = self.prev
         if self.next:
+            self.next.prev = self.prev
+        if self.prev:
             self.prev.next = self.next
             
 """
@@ -57,14 +57,14 @@ class DoublyLinkedList:
             return None
         else:
             remove = self.head.value
+            self.length -= 1
             if self.head == self.tail:
                 self.head = None
                 self.tail = None
-                self.length -= 1
             else:
-                self.head = self.head.next
+                new_head = self.head.next
                 self.head.delete()
-                self.length -= 1
+                self.head = new_head
             return remove
             
     """
@@ -90,7 +90,20 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        pass
+        if self.head is None:
+            return None
+        else:
+            removed_tail = self.tail.value
+            new_tail = self.tail.prev
+            self.length -= 1
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
+            else: 
+                self.tail.delete()
+                self.tail = new_tail
+            return removed_tail
+
             
     """
     Removes the input node from its current spot in the 
