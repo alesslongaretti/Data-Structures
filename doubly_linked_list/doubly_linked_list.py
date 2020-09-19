@@ -132,7 +132,6 @@ class DoublyLinkedList:
     """
     def delete(self, node):
         #don't need to return value
-
         # Do need to update head and tail
         if self.head is None:
             return None
@@ -154,4 +153,14 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
-        pass
+        if self.length == 0:
+            return None
+        if self.length == 1:
+            return self.head.value
+        current_node = self.head
+        current_max_value = self.head.value
+        while current_node != None:
+            if current_node.value > current_max_value:
+                current_max_value = current_node.value
+            current_node = current_node.next
+        return current_max_value
